@@ -7,6 +7,6 @@ depend: [mmoCore,mmoInfo]
 
 description: Adds {coords} to the info tokens
 permissions:
-  info.coords:
-    description: Shows the current player coordinates
+  mmo.info.coords:
+    description: Allows {coords} to show the current player coordinates
     default: op

@@ -27,9 +27,12 @@ import org.bukkit.event.Event.Priority;
 import org.bukkit.event.Event.Type;
 import org.bukkit.event.player.PlayerListener;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.getspout.spoutapi.gui.ContainerType;
+import org.getspout.spoutapi.gui.GenericContainer;
 import org.getspout.spoutapi.gui.GenericLabel;
+import org.getspout.spoutapi.gui.GenericTexture;
 import org.getspout.spoutapi.gui.Label;
-import org.getspout.spoutapi.gui.Widget;
+import org.getspout.spoutapi.player.SpoutPlayer;
 
 public class MMOInfoCoords extends MMOPlugin {
 
@@ -37,7 +40,9 @@ public class MMOInfoCoords extends MMOPlugin {
 
 	@Override
 	public BitSet mmoSupport(BitSet support) {
+		support.set(MMO_PLAYER);
 		support.set(MMO_NO_CONFIG);
+		support.set(MMO_AUTO_EXTRACT);
 		return support;
 	}
 
@@ -65,11 +70,12 @@ public class MMOInfoCoords extends MMOPlugin {
 					  @Override
 					  public void onMMOInfo(MMOInfoEvent event) {
 						  if (event.isToken("coords")) {
-							  Player player = event.getPlayer();
-							  if (player.hasPermission("info.coords")) {
+							  SpoutPlayer player = event.getPlayer();
+							  if (player.hasPermission("mmo.info.coords")) {
 								  Label label = (Label) new GenericLabel(getCoords(player)).setResize(true).setFixed(true);
 								  widgets.put(player, label);
-								  event.setWidget(label);
+								  event.setWidget(plugin, label);
+								  event.setIcon("map.png");
 							  } else {
 								  event.setCancelled(true);
 							  }
@@ -83,8 +89,13 @@ public class MMOInfoCoords extends MMOPlugin {
 		super.onDisable();
 	}
 
+	@Override
+	public void onPlayerQuit(Player player) {
+		widgets.remove(player);
+	}
+
 	public String getCoords(Player player) {
 		Location loc = player.getLocation();
-		return String.format("X:%d, Y:%d, Z:%d", (int) loc.getX(), (int) loc.getY(), (int) loc.getZ());
+		return String.format("x:%d, y:%d, z:%d", (int) loc.getX(), (int) loc.getY(), (int) loc.getZ());
 	}
 }
