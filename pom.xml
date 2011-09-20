@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<modelVersion>4.0.0</modelVersion>
 
 	<!-- Project information -->
-	<groupId>mmo.Core.MMOInfoCoords</groupId>
+	<groupId>mmo.Info.MMOInfoCoords</groupId>
 	<artifactId>mmoInfoCoords</artifactId>
 	<name>mmoInfoCoords</name>
 	<version>dev</version>
@@ -45,6 +45,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<connection>scm:git:git://github.com/mmoMinecraftDev/${project.name}.git</connection>
 		<url>https://github.com/mmoMinecraftDev/${project.name}</url>
 	</scm>
+
+    <!-- Continuous integration -->
+	<ciManagement>
+		<system>jenkins</system>
+		<url>http://ci.mmo.me.uk</url>
+	</ciManagement>
 
 	<!-- Repository locations -->
 	<repositories>
