@@ -20,7 +20,7 @@ import java.util.BitSet;
 import java.util.HashMap;
 import mmo.Core.MMOListener;
 import mmo.Core.MMOPlugin;
-import mmo.Core.events.MMOInfoEvent;
+import mmo.InfoAPI.MMOInfoEvent;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event.Priority;

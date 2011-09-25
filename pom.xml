@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<modelVersion>4.0.0</modelVersion>
 
 	<!-- Project information -->
-	<groupId>mmo.Info.MMOInfoCoords</groupId>
+	<groupId>mmo.Info</groupId>
 	<artifactId>mmoInfoCoords</artifactId>
 	<name>mmoInfoCoords</name>
 	<version>dev</version>
@@ -96,14 +96,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>mmo.Core.MMOCore</groupId>
+			<groupId>mmo.Core</groupId>
 			<artifactId>mmoCore</artifactId>
 			<version>dev</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>mmo.Info.MMOInfo</groupId>
-			<artifactId>mmoInfo</artifactId>
+			<groupId>mmo.InfoAPI</groupId>
+			<artifactId>mmoInfoAPI</artifactId>
 			<version>dev</version>
 			<scope>provided</scope>
 		</dependency>
