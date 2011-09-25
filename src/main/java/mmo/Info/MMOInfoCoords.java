@@ -18,7 +18,7 @@ package mmo.Info;
 
 import java.util.BitSet;
 import java.util.HashMap;
-import mmo.Core.MMOListener;
+import mmo.CoreAPI.MMOListener;
 import mmo.Core.MMOPlugin;
 import mmo.InfoAPI.MMOInfoEvent;
 import org.bukkit.Location;
@@ -27,10 +27,7 @@ import org.bukkit.event.Event.Priority;
 import org.bukkit.event.Event.Type;
 import org.bukkit.event.player.PlayerListener;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.getspout.spoutapi.gui.ContainerType;
-import org.getspout.spoutapi.gui.GenericContainer;
 import org.getspout.spoutapi.gui.GenericLabel;
-import org.getspout.spoutapi.gui.GenericTexture;
 import org.getspout.spoutapi.gui.Label;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
