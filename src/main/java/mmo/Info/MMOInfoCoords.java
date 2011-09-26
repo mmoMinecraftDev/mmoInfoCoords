@@ -16,10 +16,10 @@
  */
 package mmo.Info;
 
-import java.util.BitSet;
 import java.util.HashMap;
 import mmo.CoreAPI.MMOListener;
 import mmo.Core.MMOPlugin;
+import mmo.Core.util.EnumBitSet;
 import mmo.InfoAPI.MMOInfoEvent;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -36,10 +36,10 @@ public class MMOInfoCoords extends MMOPlugin {
 	private HashMap<Player, Label> widgets = new HashMap<Player, Label>();
 
 	@Override
-	public BitSet mmoSupport(BitSet support) {
-		support.set(MMO_PLAYER);
-		support.set(MMO_NO_CONFIG);
-		support.set(MMO_AUTO_EXTRACT);
+	public EnumBitSet mmoSupport(EnumBitSet support) {
+		support.set(Support.MMO_PLAYER);
+		support.set(Support.MMO_NO_CONFIG);
+		support.set(Support.MMO_AUTO_EXTRACT);
 		return support;
 	}
 
