@@ -17,10 +17,10 @@
 package mmo.Info;
 
 import java.util.HashMap;
-import mmo.CoreAPI.MMOListener;
+import mmo.Core.InfoAPI.MMOInfoEvent;
+import mmo.Core.MMOListener;
 import mmo.Core.MMOPlugin;
 import mmo.Core.util.EnumBitSet;
-import mmo.InfoAPI.MMOInfoEvent;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event.Priority;
