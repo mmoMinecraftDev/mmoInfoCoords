@@ -101,6 +101,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			<version>dev</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>mmo.Info</groupId>
+			<artifactId>mmoInfo</artifactId>
+			<version>dev</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<!-- Build -->
