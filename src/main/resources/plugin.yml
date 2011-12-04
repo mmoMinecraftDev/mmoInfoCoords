@@ -3,7 +3,7 @@ main: mmo.Info.MMOInfoCoords
 version: 1.0
 website: http://forums.bukkit.org/threads/
 author: Rycochet <rycochet@rycochet.com>
-depend: [mmoCore,mmoInfo]
+depend: [Spout,mmoCore,mmoInfo]
 
 description: Adds {coords} to the info tokens
 permissions:

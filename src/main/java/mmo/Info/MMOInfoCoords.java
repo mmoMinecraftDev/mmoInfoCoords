@@ -33,7 +33,7 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 
 public class MMOInfoCoords extends MMOPlugin {
 
-	private HashMap<Player, Label> widgets = new HashMap<Player, Label>();
+	private HashMap<Player, CustomLabel> widgets = new HashMap<Player, CustomLabel>();
 
 	@Override
 	public EnumBitSet mmoSupport(EnumBitSet support) {
@@ -47,43 +47,34 @@ public class MMOInfoCoords extends MMOPlugin {
 	public void onEnable() {
 		super.onEnable();
 		pm.registerEvent(Type.PLAYER_MOVE,
-				  new PlayerListener() {
+				new PlayerListener() {
 
-					  @Override
-					  public void onPlayerMove(PlayerMoveEvent event) {
-						  Player player = event.getPlayer();
-						  Label label = widgets.get(player);
-						  if (label != null) {
-							  String coords = getCoords(player);
-							  if (!coords.equals(label.getText())) {
-								  label.setText(coords).setDirty(true);
-							  }
-						  }
-					  }
-				  }, Priority.Monitor, this);
+					@Override
+					public void onPlayerMove(PlayerMoveEvent event) {
+						CustomLabel label = widgets.get(event.getPlayer());
+						if (label != null) {
+							label.change();
+						}
+					}
+				}, Priority.Monitor, this);
 		pm.registerEvent(Type.CUSTOM_EVENT,
-				  new MMOListener() {
+				new MMOListener() {
 
-					  @Override
-					  public void onMMOInfo(MMOInfoEvent event) {
-						  if (event.isToken("coords")) {
-							  SpoutPlayer player = event.getPlayer();
-							  if (player.hasPermission("mmo.info.coords")) {
-								  Label label = (Label) new GenericLabel(getCoords(player)).setResize(true).setFixed(true);
-								  widgets.put(player, label);
-								  event.setWidget(plugin, label);
-								  event.setIcon("map.png");
-							  } else {
-								  event.setCancelled(true);
-							  }
-						  }
-					  }
-				  }, Priority.Normal, this);
-	}
-
-	@Override
-	public void onDisable() {
-		super.onDisable();
+					@Override
+					public void onMMOInfo(MMOInfoEvent event) {
+						if (event.isToken("coords")) {
+							SpoutPlayer player = event.getPlayer();
+							if (player.hasPermission("mmo.info.coords")) {
+								CustomLabel label = (CustomLabel) new CustomLabel().setResize(true).setFixed(true);
+								widgets.put(player, label);
+								event.setWidget(plugin, label);
+								event.setIcon("map.png");
+							} else {
+								event.setCancelled(true);
+							}
+						}
+					}
+				}, Priority.Normal, this);
 	}
 
 	@Override
@@ -91,8 +82,23 @@ public class MMOInfoCoords extends MMOPlugin {
 		widgets.remove(player);
 	}
 
-	public String getCoords(Player player) {
-		Location loc = player.getLocation();
-		return String.format("x:%d, y:%d, z:%d", (int) loc.getX(), (int) loc.getY(), (int) loc.getZ());
+	public class CustomLabel extends GenericLabel {
+
+		private boolean check = true;
+
+		public CustomLabel() {
+		}
+
+		public void change() {
+			check = true;
+		}
+
+		@Override
+		public void onTick() {
+			if (check) {
+				Location loc = getScreen().getPlayer().getLocation();
+				setText(String.format("x:%d, y:%d, z:%d", (int) loc.getX(), (int) loc.getY(), (int) loc.getZ()));
+			}
+		}
 	}
 }
