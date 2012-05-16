@@ -1,12 +1,14 @@
 name: mmoInfoCoords
-main: mmo.Info.MMOInfoCoords
-version: 1.2
-website: http://forums.bukkit.org/threads/
-author: Rycochet <rycochet@rycochet.com>, Dockter
-depend: [Spout,mmoCore,mmoInfo]
+version: ${releaseVersion} b${buildNumber}
+description: Adds a {coords} token to the mmoInfo token list.
+author: mmoMinecraftDev
+website: http://mmo.me.uk
 
-description: Adds {coords} to the info tokens
+main: mmo.Info.MMOInfoCoords
+depend: [Spout, mmoCore, mmoInfo]
+
+
 permissions:
-  mmo.info.coords:
-    description: Allows {coords} to show the current player coordinates
-    default: op
+    mmo.info.coords:
+        description: Allows {coords} to show the current player coordinates
+        default: op

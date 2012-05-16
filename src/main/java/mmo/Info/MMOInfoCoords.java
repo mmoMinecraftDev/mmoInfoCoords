@@ -1,7 +1,7 @@
 /*
- * This file is part of mmoMinecraft (https://github.com/mmoMinecraftDev).
+ * This file is part of mmoInfoCoords <http://github.com/mmoMinecraftDev/mmoInfoCoords>.
  *
- * mmoMinecraft is free software: you can redistribute it and/or modify
+ * mmoInfoCoords is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -17,20 +17,22 @@
 package mmo.Info;
 
 import java.util.HashMap;
+
 import mmo.Core.InfoAPI.MMOInfoEvent;
 import mmo.Core.MMOPlugin;
 import mmo.Core.util.EnumBitSet;
+
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
+
 import org.getspout.spoutapi.gui.GenericLabel;
 import org.getspout.spoutapi.gui.Label;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 public class MMOInfoCoords extends MMOPlugin implements Listener {
-
 	private HashMap<Player, CustomLabel> widgets = new HashMap<Player, CustomLabel>();
 
 	@Override
@@ -68,15 +70,12 @@ public class MMOInfoCoords extends MMOPlugin implements Listener {
 		}
 	}
 
-
-
 	@EventHandler
 	public void onPlayerQuit(Player player) {
 		widgets.remove(player);
 	}
 
 	public class CustomLabel extends GenericLabel {
-
 		private boolean check = true;
 
 		public CustomLabel() {
