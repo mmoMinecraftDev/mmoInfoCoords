@@ -1,5 +1,5 @@
 name: mmoInfoCoords
-version: ${releaseVersion} b${buildNumber}
+version: ${releaseVersion}.${buildNumber}
 description: Adds a {coords} token to the mmoInfo token list.
 author: mmoMinecraftDev
 website: http://mmo.me.uk
