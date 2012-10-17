@@ -45,7 +45,7 @@ public class MMOInfoCoords extends MMOPlugin implements Listener {
 	@Override
 	public void onEnable() {
 		super.onEnable();
-		pm.registerEvents(this, this); } 
+		pm.registerEvents(this, this); }
 
 	@EventHandler
 	public void onPlayerMove(PlayerMoveEvent event) {
@@ -64,15 +64,8 @@ public class MMOInfoCoords extends MMOPlugin implements Listener {
 				widgets.put(player, label);
 				event.setWidget(plugin, label);
 				event.setIcon("map.png");
-			} else {
-				event.setCancelled(true);
 			}
 		}
-	}
-
-	@EventHandler
-	public void onPlayerQuit(Player player) {
-		widgets.remove(player);
 	}
 
 	public class CustomLabel extends GenericLabel {
