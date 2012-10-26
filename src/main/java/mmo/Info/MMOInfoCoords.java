@@ -49,10 +49,7 @@ public class MMOInfoCoords extends MMOPlugin implements Listener {
 
 	@EventHandler
 	public void onPlayerMove(PlayerMoveEvent event) {
-		CustomLabel label = widgets.get(event.getPlayer());
-		if (label != null) {
-			label.change();
-		}
+		CustomLabel label = widgets.get(event.getPlayer());		
 	}
 
 	@EventHandler
@@ -60,7 +57,7 @@ public class MMOInfoCoords extends MMOPlugin implements Listener {
 		if (event.isToken("coords")) {
 			SpoutPlayer player = event.getPlayer();
 			if (player.hasPermission("mmo.info.coords")) {
-				CustomLabel label = (CustomLabel) new CustomLabel().setResize(true).setFixed(true);
+				CustomLabel label = (CustomLabel) new CustomLabel().setResize(true).setFixed(true).setWidth(110);
 				widgets.put(player, label);
 				event.setWidget(plugin, label);
 				event.setIcon("map.png");
@@ -69,20 +66,14 @@ public class MMOInfoCoords extends MMOPlugin implements Listener {
 	}
 
 	public class CustomLabel extends GenericLabel {
-		private boolean check = true;
+		private transient int tick = 0;
 
-		public CustomLabel() {
-		}
-
-		public void change() {
-			check = true;
-		}
 
 		@Override
 		public void onTick() {
-			if (check) {
+			if (tick++ % 20 == 0) {		
 				Location loc = getScreen().getPlayer().getLocation();
-				setText(String.format("x:%d, y:%d, z:%d", (int) loc.getX(), (int) loc.getY(), (int) loc.getZ()));
+				setText(String.format("x:%d, y:%d, z:%d", (int) loc.getX(), (int) loc.getY(), (int) loc.getZ()));				
 			}
 		}
 	}
